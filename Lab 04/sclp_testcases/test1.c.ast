@@ -1,0 +1,188 @@
+Program:
+   Procedure: main, Return Type: void
+
+      Sequence Ast:
+
+         IF : 
+         CONDITION (
+            Condition: LT
+               LHS (Name : f)
+               RHS (Name : g))
+         THEN (
+      Sequence Ast:
+
+         Asgn:
+            LHS (Name : f)
+            RHS (Num : 3.40))
+         ELSE (
+         IF : 
+         CONDITION (
+            Condition: LT
+               LHS (Name : f)
+               RHS (Name : g))
+         THEN (
+      Sequence Ast:
+)
+         ELSE (
+      Sequence Ast:
+))
+         IF : 
+         CONDITION (
+            Condition: EQ
+               LHS (
+            Arith: PLUS
+               LHS (Name : a)
+               RHS (Name : b))
+               RHS (
+            Arith: PLUS
+               LHS (Name : b)
+               RHS (Name : c)))
+         THEN (
+      Sequence Ast:
+
+         Asgn:
+            LHS (Name : c)
+            RHS (Num : 5)
+         IF : 
+         CONDITION (
+            Condition: LT
+               LHS (Name : c)
+               RHS (Num : 4))
+         THEN (
+         Asgn:
+            LHS (Name : c)
+            RHS (Num : 3))
+         ELSE (
+      Sequence Ast:
+))
+         ELSE (
+      Sequence Ast:
+)
+         Asgn:
+            LHS (Name : d)
+            RHS (
+            Arith: Conditional
+               COND (
+            Condition: LT
+               LHS (Name : a)
+               RHS (Num : 4))
+               LHS (Name : b)
+               RHS (Name : c))
+         IF : 
+         CONDITION (
+            Condition: LE
+               LHS (Name : c)
+               RHS (Num : 4))
+         THEN (
+         IF : 
+         CONDITION (
+            Condition: GT
+               LHS (Name : c)
+               RHS (Num : 4))
+         THEN (
+      Sequence Ast:
+)
+         ELSE (
+      Sequence Ast:
+))
+         ELSE (
+      Sequence Ast:
+)
+         IF : 
+         CONDITION (
+            Condition: GE
+               LHS (Name : c)
+               RHS (Num : 6))
+         THEN (
+      Sequence Ast:
+)
+         ELSE (
+         Asgn:
+            LHS (Name : c)
+            RHS (Num : 4))
+         IF : 
+         CONDITION (
+            Condition: EQ
+               LHS (Name : c)
+               RHS (Num : 3))
+         THEN (
+         Asgn:
+            LHS (Name : c)
+            RHS (Num : 2))
+         ELSE (
+         Asgn:
+            LHS (Name : d)
+            RHS (Num : 3))
+         IF : 
+         CONDITION (
+            Condition: AND
+               LHS (
+            Condition: GT
+               LHS (Name : a)
+               RHS (Num : 2))
+               RHS (
+            Condition: EQ
+               LHS (Name : b)
+               RHS (Num : 2)))
+         THEN (
+      Sequence Ast:
+)
+         ELSE (
+      Sequence Ast:
+)
+         IF : 
+         CONDITION (
+            Condition: GT
+               LHS (Name : a)
+               RHS (Num : 2))
+         THEN (
+      Sequence Ast:
+)
+         ELSE (
+      Sequence Ast:
+)
+         IF : 
+         CONDITION (
+            Condition: OR
+               LHS (
+            Condition: EQ
+               LHS (Name : a)
+               RHS (Num : 2))
+               RHS (
+            Condition: EQ
+               LHS (Name : b)
+               RHS (Num : 2)))
+         THEN (
+      Sequence Ast:
+)
+         ELSE (
+      Sequence Ast:
+)
+         IF : 
+         CONDITION (
+            Condition: NOT
+               RHS (
+            Condition: EQ
+               LHS (Name : a)
+               RHS (Num : 2)))
+         THEN (
+      Sequence Ast:
+)
+         ELSE (
+      Sequence Ast:
+)
+         Asgn:
+            LHS (Name : f)
+            RHS (
+            Arith: Conditional
+               COND (
+            Condition: GT
+               LHS (Name : b)
+               RHS (Num : 2))
+               LHS (Name : f)
+               RHS (Name : g))
+         Asgn:
+            LHS (Name : a)
+            RHS (
+            Arith: UMINUS
+               LHS (Name : b))

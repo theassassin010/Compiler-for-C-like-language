@@ -1,0 +1,184 @@
+
+	.text 			# The .text assembler directive indicates
+	.globl main		# The following is the code (as oppose to data)
+main:				# .globl makes main know to the 
+				# outside of the program.
+# Prologue begins 
+	sw $fp, 0($sp)		# Save the frame pointer
+	sub $fp, $sp, 4		# Update the frame pointer
+
+	sub $sp, $sp, 36		# Make space for the locals
+# Prologue ends
+
+	l.d $f2, 0($fp)
+	l.d $f4, -8($fp)
+	slt $v0, $f2, $f4
+	beq $v0, $zero, label2 
+	li.d $f2, 3.40
+	s.d $f2, 0($fp)
+	j label3
+
+label2:    	
+	l.d $f2, 0($fp)
+	l.d $f4, -8($fp)
+	slt $t0, $f2, $f4
+	beq $t0, $zero, label0 
+	j label1
+
+label0:    	
+
+label1:    	
+
+label3:    	
+	lw $v0, -16($fp)
+	lw $t0, -20($fp)
+	add $t1, $v0, $t0
+	lw $v0, -20($fp)
+	lw $t0, -24($fp)
+	add $t2, $v0, $t0
+	seq $v0, $t1, $t2
+	beq $v0, $zero, label6 
+	li $t0, 5
+	sw $t0, -24($fp)
+	lw $t0, -24($fp)
+	li $t1, 4
+	slt $t2, $t0, $t1
+	beq $t2, $zero, label4 
+	li $t0, 3
+	sw $t0, -24($fp)
+	j label5
+
+label4:    	
+
+label5:    	
+	j label7
+
+label6:    	
+
+label7:    	
+	lw $v0, -16($fp)
+	li $t0, 4
+	slt $t1, $v0, $t0
+	beq $t1, $zero, label8 
+	lw $v0, -20($fp)
+	or $t2, $v0, $zero
+	j label9
+
+label8:    	
+	lw $t0, -24($fp)
+	or $t2, $t0, $zero
+
+label9:    	
+	sw $t2, -28($fp)
+	lw $v0, -24($fp)
+	li $t0, 4
+	sle $t1, $v0, $t0
+	beq $t1, $zero, label12 
+	lw $v0, -24($fp)
+	li $t0, 4
+	sgt $t2, $v0, $t0
+	beq $t2, $zero, label10 
+	j label11
+
+label10:    	
+
+label11:    	
+	j label13
+
+label12:    	
+
+label13:    	
+	lw $v0, -24($fp)
+	li $t0, 6
+	sge $t1, $v0, $t0
+	beq $t1, $zero, label14 
+	j label15
+
+label14:    	
+	li $v0, 4
+	sw $v0, -24($fp)
+
+label15:    	
+	lw $v0, -24($fp)
+	li $t0, 3
+	seq $t1, $v0, $t0
+	beq $t1, $zero, label16 
+	li $v0, 2
+	sw $v0, -24($fp)
+	j label17
+
+label16:    	
+	li $v0, 3
+	sw $v0, -28($fp)
+
+label17:    	
+	lw $v0, -16($fp)
+	li $t0, 2
+	sgt $t1, $v0, $t0
+	lw $v0, -20($fp)
+	li $t0, 2
+	seq $t2, $v0, $t0
+	and $v0, $t1, $t2
+	beq $v0, $zero, label18 
+	j label19
+
+label18:    	
+
+label19:    	
+	lw $v0, -16($fp)
+	li $t0, 2
+	sgt $t1, $v0, $t0
+	beq $t1, $zero, label20 
+	j label21
+
+label20:    	
+
+label21:    	
+	lw $v0, -16($fp)
+	li $t0, 2
+	seq $t1, $v0, $t0
+	lw $v0, -20($fp)
+	li $t0, 2
+	seq $t2, $v0, $t0
+	or $v0, $t1, $t2
+	beq $v0, $zero, label22 
+	j label23
+
+label22:    	
+
+label23:    	
+	li $v0, 1
+	lw $t0, -16($fp)
+	li $t1, 2
+	seq $t2, $t0, $t1
+	sltu $t0, $t2, $v0
+	beq $t0, $zero, label24 
+	j label25
+
+label24:    	
+
+label25:    	
+	lw $v0, -20($fp)
+	li $t0, 2
+	sgt $t1, $v0, $t0
+	beq $t1, $zero, label26 
+	l.d $f2, 0($fp)
+	or $f6, $f2, $zero
+	j label27
+
+label26:    	
+	l.d $f4, -8($fp)
+	or $f6, $f4, $zero
+
+label27:    	
+	s.d $f6, 0($fp)
+	lw $v0, -20($fp)
+	neg $t0, $v0
+	sw $t0, -16($fp)
+
+# Epilogue Begins
+	add $sp, $sp, 36
+	lw $fp, 0($sp)  
+	jr        $31		# Jump back to the operating system.
+# Epilogue Ends
+

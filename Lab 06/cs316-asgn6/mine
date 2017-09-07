@@ -1,0 +1,413 @@
+Program:
+   Procedure: main, Return Type: void
+
+      Sequence Ast:
+
+         Asgn:
+            LHS (Name : c)
+            RHS (
+            Arith: PLUS
+               LHS (Name : a)
+               RHS (Name : b))
+         Asgn:
+            LHS (Name : c)
+            RHS (
+            Arith: PLUS
+               LHS (Name : a)
+               RHS (Name : b))
+         Asgn:
+            LHS (Name : f)
+            RHS (
+            Arith: PLUS
+               LHS (Name : g)
+               RHS (Name : h))
+         Asgn:
+            LHS (Name : c)
+            RHS (
+            Arith: DIV
+               LHS (Name : a)
+               RHS (Name : b))
+         Asgn:
+            LHS (Name : f)
+            RHS (
+            Arith: DIV
+               LHS (Name : g)
+               RHS (Name : h))
+         Asgn:
+            LHS (Name : c)
+            RHS (
+            Arith: MULT
+               LHS (Name : a)
+               RHS (Name : b))
+         Asgn:
+            LHS (Name : f)
+            RHS (
+            Arith: MULT
+               LHS (Name : g)
+               RHS (Name : h))
+         IF : 
+         CONDITION (
+            Condition: GT
+               LHS (Name : a)
+               RHS (Name : b))
+         THEN (
+      Sequence Ast:
+
+         Asgn:
+            LHS (Name : c)
+            RHS (
+            Arith: PLUS
+               LHS (Name : a)
+               RHS (Name : b)))
+         ELSE (
+      Sequence Ast:
+
+         Asgn:
+            LHS (Name : c)
+            RHS (
+            Arith: MINUS
+               LHS (Name : a)
+               RHS (Name : b)))
+         Asgn:
+            LHS (Name : c)
+            RHS (
+            Arith: PLUS
+               LHS (Name : a)
+               RHS (Name : b))
+         WHILE : 
+         CONDITION (
+            Condition: GT
+               LHS (Name : a)
+               RHS (Name : b))
+         BODY (
+      Sequence Ast:
+
+         Asgn:
+            LHS (Name : c)
+            RHS (
+            Arith: MULT
+               LHS (Name : a)
+               RHS (Name : b)))
+         Asgn:
+            LHS (Name : c)
+            RHS (
+            Arith: PLUS
+               LHS (Name : a)
+               RHS (Name : b))
+         Asgn:
+            LHS (Name : c)
+            RHS (
+            Arith: PLUS
+               LHS (Name : a)
+               RHS (Name : b))
+         DO (
+      Sequence Ast:
+
+         Asgn:
+            LHS (Name : c)
+            RHS (
+            Arith: MULT
+               LHS (Name : a)
+               RHS (Name : b)))
+         WHILE CONDITION (
+            Condition: GT
+               LHS (Name : a)
+               RHS (Name : b))
+         Asgn:
+            LHS (Name : c)
+            RHS (
+            Arith: PLUS
+               LHS (Name : a)
+               RHS (Name : b))
+         Asgn:
+            LHS (Name : c)
+            RHS (
+            Arith: Conditional
+               COND (
+            Condition: GT
+               LHS (Name : a)
+               RHS (Name : b))
+               LHS (
+            Arith: Conditional
+               COND (
+            Condition: GT
+               LHS (Name : a)
+               RHS (Name : b))
+               LHS (Name : a)
+               RHS (Name : b))
+               RHS (
+            Arith: Conditional
+               COND (
+            Condition: GT
+               LHS (Name : a)
+               RHS (Name : b))
+               LHS (Name : a)
+               RHS (Name : b)))  Procedure: main
+  Intermediate Code Statements
+	load:    	v0 <- a
+	load:    	t0 <- b
+	add:    	t1 <- v0 , t0
+	store:    	c <- t1
+	load:    	v0 <- a
+	load:    	t0 <- b
+	add:    	t1 <- v0 , t0
+	store:    	c <- t1
+	load.d:    	f2 <- g
+	load.d:    	f4 <- h
+	add.d:    	f6 <- f2 , f4
+	store.d:    	f <- f6
+	load:    	v0 <- a
+	load:    	t0 <- b
+	div:    	t1 <- v0 , t0
+	store:    	c <- t1
+	load.d:    	f2 <- g
+	load.d:    	f4 <- h
+	div.d:    	f6 <- f2 , f4
+	store.d:    	f <- f6
+	load:    	v0 <- a
+	load:    	t0 <- b
+	mul:    	t1 <- v0 , t0
+	store:    	c <- t1
+	load.d:    	f2 <- g
+	load.d:    	f4 <- h
+	mul.d:    	f6 <- f2 , f4
+	store.d:    	f <- f6
+	load:    	v0 <- a
+	load:    	t0 <- b
+	sgt:    	t1 <- v0 , t0
+	beq:    	t1 , zero : goto label0
+	load:    	v0 <- a
+	load:    	t0 <- b
+	add:    	t2 <- v0 , t0
+	store:    	c <- t2
+	goto label1
+
+label0:    	
+	load:    	v0 <- a
+	load:    	t0 <- b
+	sub:    	t2 <- v0 , t0
+	store:    	c <- t2
+
+label1:    	
+	load:    	v0 <- a
+	load:    	t0 <- b
+	add:    	t1 <- v0 , t0
+	store:    	c <- t1
+	goto label3
+
+label2:    	
+	load:    	v0 <- a
+	load:    	t0 <- b
+	mul:    	t2 <- v0 , t0
+	store:    	c <- t2
+
+label3:    	
+	load:    	v0 <- a
+	load:    	t0 <- b
+	sgt:    	t1 <- v0 , t0
+	bne:    	t1 , zero : goto label2
+	load:    	v0 <- a
+	load:    	t0 <- b
+	add:    	t1 <- v0 , t0
+	store:    	c <- t1
+	load:    	v0 <- a
+	load:    	t0 <- b
+	add:    	t1 <- v0 , t0
+	store:    	c <- t1
+
+label4:    	
+	load:    	v0 <- a
+	load:    	t0 <- b
+	mul:    	t2 <- v0 , t0
+	store:    	c <- t2
+
+label5:    	
+	load:    	v0 <- a
+	load:    	t0 <- b
+	sgt:    	t1 <- v0 , t0
+	bne:    	t1 , zero : goto label4
+	load:    	v0 <- a
+	load:    	t0 <- b
+	add:    	t1 <- v0 , t0
+	store:    	c <- t1
+	load:    	v0 <- a
+	load:    	t0 <- b
+	sgt:    	t1 <- v0 , t0
+	beq:    	t1 , zero : goto label10
+	load:    	v0 <- a
+	load:    	t0 <- b
+	sgt:    	t2 <- v0 , t0
+	beq:    	t2 , zero : goto label6
+	load:    	v0 <- a
+	or:    	t3 <- v0 , zero
+	goto label7
+
+label6:    	
+	load:    	t0 <- b
+	or:    	t3 <- t0 , zero
+
+label7:    	
+	or:    	v0 <- t3 , zero
+	goto label11
+
+label10:    	
+	load:    	v0 <- a
+	load:    	t0 <- b
+	sgt:    	t2 <- v0 , t0
+	beq:    	t2 , zero : goto label8
+	load:    	v0 <- a
+	or:    	t4 <- v0 , zero
+	goto label9
+
+label8:    	
+	load:    	t0 <- b
+	or:    	t4 <- t0 , zero
+
+label9:    	
+	or:    	v0 <- t4 , zero
+
+label11:    	
+	store:    	c <- v0
+
+	.text 			# The .text assembler directive indicates
+	.globl main		# The following is the code (as oppose to data)
+main:				# .globl makes main know to the 
+				# outside of the program.
+# Prologue begins 
+	sw $fp, 0($sp)		# Save the frame pointer
+	sub $fp, $sp, 4		# Update the frame pointer
+
+	sub $sp, $sp, 40		# Make space for the locals
+# Prologue ends
+
+	lw $v0, 0($fp)
+	lw $t0, -4($fp)
+	add $t1, $v0, $t0
+	sw $t1, -8($fp)
+	lw $v0, 0($fp)
+	lw $t0, -4($fp)
+	add $t1, $v0, $t0
+	sw $t1, -8($fp)
+	l.d $f2, -20($fp)
+	l.d $f4, -28($fp)
+	add.d $f6, $f2, $f4
+	s.d $f6, -12($fp)
+	lw $v0, 0($fp)
+	lw $t0, -4($fp)
+	div $t1, $v0, $t0
+	sw $t1, -8($fp)
+	l.d $f2, -20($fp)
+	l.d $f4, -28($fp)
+	div.d $f6, $f2, $f4
+	s.d $f6, -12($fp)
+	lw $v0, 0($fp)
+	lw $t0, -4($fp)
+	mul $t1, $v0, $t0
+	sw $t1, -8($fp)
+	l.d $f2, -20($fp)
+	l.d $f4, -28($fp)
+	mul.d $f6, $f2, $f4
+	s.d $f6, -12($fp)
+	lw $v0, 0($fp)
+	lw $t0, -4($fp)
+	sgt $t1, $v0, $t0
+	beq $t1, $zero, label0 
+	lw $v0, 0($fp)
+	lw $t0, -4($fp)
+	add $t2, $v0, $t0
+	sw $t2, -8($fp)
+	j label1
+
+label0:    	
+	lw $v0, 0($fp)
+	lw $t0, -4($fp)
+	sub $t2, $v0, $t0
+	sw $t2, -8($fp)
+
+label1:    	
+	lw $v0, 0($fp)
+	lw $t0, -4($fp)
+	add $t1, $v0, $t0
+	sw $t1, -8($fp)
+	j label3
+
+label2:    	
+	lw $v0, 0($fp)
+	lw $t0, -4($fp)
+	mul $t2, $v0, $t0
+	sw $t2, -8($fp)
+
+label3:    	
+	lw $v0, 0($fp)
+	lw $t0, -4($fp)
+	sgt $t1, $v0, $t0
+	bne $t1, $zero, label2 
+	lw $v0, 0($fp)
+	lw $t0, -4($fp)
+	add $t1, $v0, $t0
+	sw $t1, -8($fp)
+	lw $v0, 0($fp)
+	lw $t0, -4($fp)
+	add $t1, $v0, $t0
+	sw $t1, -8($fp)
+
+label4:    	
+	lw $v0, 0($fp)
+	lw $t0, -4($fp)
+	mul $t2, $v0, $t0
+	sw $t2, -8($fp)
+
+label5:    	
+	lw $v0, 0($fp)
+	lw $t0, -4($fp)
+	sgt $t1, $v0, $t0
+	bne $t1, $zero, label4 
+	lw $v0, 0($fp)
+	lw $t0, -4($fp)
+	add $t1, $v0, $t0
+	sw $t1, -8($fp)
+	lw $v0, 0($fp)
+	lw $t0, -4($fp)
+	sgt $t1, $v0, $t0
+	beq $t1, $zero, label10 
+	lw $v0, 0($fp)
+	lw $t0, -4($fp)
+	sgt $t2, $v0, $t0
+	beq $t2, $zero, label6 
+	lw $v0, 0($fp)
+	or $t3, $v0, $zero
+	j label7
+
+label6:    	
+	lw $t0, -4($fp)
+	or $t3, $t0, $zero
+
+label7:    	
+	or $v0, $t3, $zero
+	j label11
+
+label10:    	
+	lw $v0, 0($fp)
+	lw $t0, -4($fp)
+	sgt $t2, $v0, $t0
+	beq $t2, $zero, label8 
+	lw $v0, 0($fp)
+	or $t4, $v0, $zero
+	j label9
+
+label8:    	
+	lw $t0, -4($fp)
+	or $t4, $t0, $zero
+
+label9:    	
+	or $v0, $t4, $zero
+
+label11:    	
+	sw $v0, -8($fp)
+
+# Epilogue Begins
+	add $sp, $sp, 40
+	lw $fp, 0($sp)  
+	jr        $31		# Jump back to the operating system.
+# Epilogue Ends
+
